@@ -24,12 +24,12 @@ func TestGetAPIKey(t *testing.T) {
 		{
 			header: "asdf",
 			str:    "",
-			err:    MalformedHeader,
+			err:    ErrMalformedHeader,
 		},
 		{
 			header: "asdf sdfasf",
 			str:    "",
-			err:    MalformedHeader,
+			err:    ErrMalformedHeader,
 		},
 	}
 
