@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"testing"
 	"net/http"
+	"testing"
 )
 
 func TestGetAPIKey(t *testing.T) {
@@ -10,26 +10,26 @@ func TestGetAPIKey(t *testing.T) {
 		header string
 		str    string
 		err    error
-	} {
+	}{
 		{
 			header: "",
-			str: "",
-			err: ErrNoAuthHeaderIncluded,
+			str:    "",
+			err:    ErrNoAuthHeaderIncluded,
 		},
 		{
 			header: "ApiKey asdf",
-			str: "asdf",
-			err: nil,
+			str:    "asdf",
+			err:    nil,
 		},
 		{
 			header: "asdf",
-			str: "",
-			err: MalformedHeader,
+			str:    "",
+			err:    MalformedHeader,
 		},
 		{
 			header: "asdf sdfasf",
-			str: "",
-			err: MalformedHeader,
+			str:    "",
+			err:    MalformedHeader,
 		},
 	}
 
@@ -40,12 +40,11 @@ func TestGetAPIKey(t *testing.T) {
 		if apiKey != testcase.str {
 			t.Errorf("Expected output of %v but got: %v", testcase.str, apiKey)
 		}
-		
+
 		if err != testcase.err {
 			t.Errorf("Expected error of %v but got: %v", testcase.err, err)
 		}
 
-		
 		if err == nil && testcase.err != nil {
 			t.Errorf("Expected an error but got none")
 		}
